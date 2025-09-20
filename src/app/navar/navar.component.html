@@ -1,0 +1,39 @@
+<body>
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="logo-section">
+      <div class="logo"></div>
+      <span class="brand-name">NICE BUYS</span>
+    </div>
+
+    <ul class="nav-links" [class.active]="menuActivo">
+      <li><a href="#" class="nav-link" (click)="activarLink('Laptops')">Laptops</a></li>
+      <li><a href="#" class="nav-link" (click)="activarLink('Desktop PCs')">Desktop PCs</a></li>
+      <li><a href="#" class="nav-link" (click)="activarLink('Networking Devices')">Networking Devices</a></li>
+      <li><a href="#" class="nav-link" (click)="activarLink('Printers & Scanners')">Printers & Scanners</a></li>
+      <li><a href="#" class="nav-link" (click)="activarLink('PC Parts')">PC Parts</a></li>
+    </ul>
+
+    <div class="right-section">
+      <div class="search-container">
+        <input type="text" class="search-box" [(ngModel)]="searchTerm" placeholder="#NICEBOYS_USANDO" (keypress.enter)="performSearch()">
+        <button class="search-btn" (click)="performSearch()">🔍</button>
+      </div>
+
+      <button class="icon-btn" title="Carrito de compras" (click)="abrirCarrito()">
+        🛒
+        <span class="cart-badge">3</span>
+      </button>
+
+      <div class="profile-avatar" title="Perfil de usuario" (click)="abrirPerfil()">
+        U
+      </div>
+
+      <button class="mobile-menu-btn" (click)="toggleMenu()">
+        {{ menuActivo ? '✕' : '☰' }}
+      </button>
+    </div>
+  </div>
+</nav>
+</body>
+

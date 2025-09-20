@@ -1,0 +1,80 @@
+<div class="search-container">
+  <div class="search-input-wrapper">
+    <div class="search-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+        <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </div>
+    
+    <input 
+      type="text" 
+      class="search-input"
+      [(ngModel)]="searchQuery"
+      (input)="onInputChange()"
+      (focus)="onInputFocus()"
+      (blur)="onInputBlur()"
+      (keydown)="onKeyDown($event)"
+      placeholder="Buscar..."
+      autocomplete="off"
+    >
+    
+    <button 
+      *ngIf="searchQuery" 
+      class="clear-button"
+      (click)="clearSearch()"
+      type="button"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2"/>
+        <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </button>
+
+    <button 
+      class="search-button"
+      (click)="onSearch()"
+      type="button"
+    >
+      Buscar
+    </button>
+  </div>
+
+  <!-- Dropdown del historial -->
+  <div *ngIf="showDropdown" class="search-dropdown">
+    <div class="dropdown-header" *ngIf="filteredHistory.length > 0">
+      <span>Búsquedas recientes</span>
+    </div>
+    
+    <div 
+      *ngFor="let item of filteredHistory; let i = index"
+      class="history-item"
+      [class.selected]="i === selectedIndex"
+      (click)="selectHistoryItem(item)"
+    >
+      <div class="history-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
+      
+      <span class="history-text">{{ item }}</span>
+      
+      <button 
+        class="remove-button"
+        (click)="removeFromHistory(item, $event)"
+        title="Eliminar del historial"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2"/>
+          <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </button>
+    </div>
+
+    <div *ngIf="filteredHistory.length === 0" class="no-results">
+      No hay resultados en el historial
+    </div>
+  </div>
+</div>

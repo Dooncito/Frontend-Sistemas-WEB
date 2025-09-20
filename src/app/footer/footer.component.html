@@ -1,0 +1,58 @@
+<!-- footer.component.html -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Sección principal del footer -->
+    <div class="footer-content">
+      <!-- Sección izquierda - Información -->
+      <div class="footer-left">
+        <h3 class="footer-title">APRENDE SOBRE NOSOTROS</h3>
+        <p class="footer-subtitle">INFÓRMATE Y DESCUBRE NUESTRO PROPÓSITO</p>
+        
+        <!-- Lista de enlaces -->
+        <ul class="footer-links">
+          <li><a href="#" class="footer-link">PQR</a></li>
+          <li><a href="#" class="footer-link">Términos PQR</a></li>
+          <li><a href="#" class="footer-link">Servicios</a></li>
+          <li><a href="#" class="footer-link">Más Información PQR</a></li>
+          <li><a href="#" class="footer-link">Trabaja con PQR</a></li>
+          <li><a href="#" class="footer-link">Ayuda PQR</a></li>
+          <li><a href="#" class="footer-link">Línea PQR</a></li>
+        </ul>
+      </div>
+      
+      <!-- Sección derecha - Newsletter -->
+      <div class="footer-right">
+        <form class="newsletter-form" (ngSubmit)="onSubscribe()" #newsletterForm="ngForm">
+          <div class="input-group">
+            <input 
+              type="email" 
+              class="newsletter-input" 
+              placeholder="E-mail"
+              [(ngModel)]="email"
+              name="email"
+              required
+              #emailInput="ngModel">
+            <button 
+              type="submit" 
+              class="newsletter-button"
+              [disabled]="!newsletterForm.form.valid">
+              SUSCRIBETE
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Sección de métodos de pago -->
+    <div class="payment-methods">
+      <div class="payment-icons">
+        <img src="assets/images/paypal.png" alt="PayPal" class="payment-icon">
+        <img src="assets/images/visa.png" alt="Visa" class="payment-icon">
+        <img src="assets/images/mastercard.png" alt="Mastercard" class="payment-icon">
+        <img src="assets/images/discover.png" alt="Discover" class="payment-icon">
+        <img src="assets/images/amex.png" alt="American Express" class="payment-icon">
+      </div>
+    </div>
+  </div>
+  
+</footer>
