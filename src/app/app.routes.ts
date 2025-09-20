@@ -4,7 +4,7 @@ import { ProductViewComponent } from './pages/product-view/product-view.componen
 import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },       // Página principal
+  { path: 'Inicio', component: HomeComponent },       // Página principal
   { path: 'product/:id', component: ProductViewComponent }, // Vista producto
   { path: 'login', component: LoginComponent }, // Login
 ];

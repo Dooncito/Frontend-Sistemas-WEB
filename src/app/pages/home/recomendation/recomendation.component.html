@@ -1,0 +1,91 @@
+<!-- recomendation.component.html -->
+<div class="container">
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <span class="store-hours">{{ currentTime }}</span>
+    </div>
+    <div class="header-center">
+      <h1 class="logo">NICE BUYS</h1>
+    </div>
+    <div class="header-right">
+      <button class="header-btn">Registro</button>
+      <button class="header-btn">Login</button>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-subtitle">LAS MEJORES OFERTAS EN RELOJES INTELIGENTES</p>
+        <h2 class="hero-title">Relojes Inteligentes</h2>
+        <p class="hero-discount">%80 De Descuento</p>
+        <div class="hero-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop" alt="Smartwatch" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Navigation -->
+  <nav class="categories-nav">
+    <button 
+      *ngFor="let category of categories" 
+      class="category-btn"
+      [class.active]="category.active"
+      (click)="onCategoryClick(category)">
+      {{ category.name }}
+    </button>
+  </nav>
+
+  <!-- Products Section -->
+  <section class="products-section">
+    <div class="section-header">
+      <h3 class="section-title">TOP PRODUCTOS MAS VENDIDOS</h3>
+      <a href="#" class="see-all-link">Ver todo comercios en Electrónicos</a>
+    </div>
+    
+    <div class="products-carousel">
+      <button class="carousel-nav prev" (click)="scrollCarousel('prev')" [disabled]="currentIndex === 0">
+        ‹
+      </button>
+      <button class="carousel-nav next" (click)="scrollCarousel('next')" [disabled]="currentIndex >= maxScrollIndex">
+        ›
+      </button>
+      
+      <div class="carousel-container" #carouselContainer [style.transform]="'translateX(' + (-currentIndex * cardWidth) + 'px)'">
+        <div *ngFor="let product of topProducts" class="product-card">
+          <div class="product-image">
+            <img [src]="product.image" [alt]="product.name" />
+            <span class="stock-indicator"></span>
+          </div>
+          <div class="product-info">
+            <div class="product-rating">
+              <div class="stars">
+                <span 
+                  *ngFor="let star of generateStars(product.rating)" 
+                  class="star"
+                  [class.filled]="star">
+                  ★
+                </span>
+              </div>
+              <span class="reviews-count">Revisiones ({{ product.reviews }})</span>
+            </div>
+            <h4 class="product-name">{{ product.name }}</h4>
+            <div class="product-price">
+              <span class="current-price">${{ product.price }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
