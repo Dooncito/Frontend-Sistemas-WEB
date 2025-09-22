@@ -285,3 +285,30 @@
             width: 40px;
             height: 40px;
         }
+
+
+/* 🔹 Botones de Login y Registro */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-btn {
+  padding: 8px 16px;
+  border: 2px solid white; /* borde blanco */
+  border-radius: 20px; /* 👈 redondeados */
+  background: white; /* 👈 fondo blanco */
+  color: #1b001b; /* texto oscuro para contraste */
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* ligera sombra */
+}
+
+/* Hover efecto */
+.auth-btn:hover {
+  background: #f0f0f0; /* gris claro al pasar el mouse */
+  transform: scale(1.05);
+}
+

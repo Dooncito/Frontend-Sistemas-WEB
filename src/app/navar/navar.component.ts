@@ -9,12 +9,17 @@ import { FormsModule } from '@angular/forms'; // 👈 importa aquí
   templateUrl: './navar.component.html',
   styleUrl: './navar.component.css'
 })
-
 export class NavarComponent {
   menuActivo = false;
   searchTerm = '';
   activeLink = '';
 
+  // 👇 variables para login/registro
+  mostrarLogin = false;
+  mostrarRegistro = false;
+
+  loginData = { email: '', password: '' };
+  registroData = { nombre: '', email: '', password: '' };
 
   toggleMenu() {
     this.menuActivo = !this.menuActivo;
@@ -38,6 +43,34 @@ export class NavarComponent {
 
   abrirPerfil() {
     alert('Abriendo perfil de usuario');
+  }
+
+  // 👇 funciones nuevas
+  abrirLogin() {
+    this.mostrarLogin = true;
+    this.mostrarRegistro = false;
+  }
+
+  abrirRegistro() {
+    this.mostrarRegistro = true;
+    this.mostrarLogin = false;
+  }
+
+  cerrarModal() {
+    this.mostrarLogin = false;
+    this.mostrarRegistro = false;
+  }
+
+  loginUsuario() {
+    console.log("Login:", this.loginData);
+    alert(`Login con: ${this.loginData.email}`);
+    this.cerrarModal();
+  }
+
+  registrarUsuario() {
+    console.log("Registro:", this.registroData);
+    alert(`Registro con: ${this.registroData.email}`);
+    this.cerrarModal();
   }
 
   // Cerrar menú en resize

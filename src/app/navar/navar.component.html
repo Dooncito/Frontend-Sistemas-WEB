@@ -25,10 +25,17 @@
         <span class="cart-badge">3</span>
       </button>
 
+      <!-- Login/Register buttons -->
+    <div class="auth-buttons">
+        <button class="auth-btn login" (click)="abrirLogin()">Login</button>
+        <button class="auth-btn register" (click)="abrirRegistro()">Register</button>
+    </div>
+
       <div class="profile-avatar" title="Perfil de usuario" (click)="abrirPerfil()">
         U
       </div>
 
+      
       <button class="mobile-menu-btn" (click)="toggleMenu()">
         {{ menuActivo ? '✕' : '☰' }}
       </button>
